@@ -1,0 +1,131 @@
+/* Watchlist Page Styles */
+.watchlist-content {
+  padding: calc(20px * var(--scale-factor)) calc(30px * var(--scale-factor));
+}
+
+.watchlist-header {
+  margin-bottom: calc(30px * var(--scale-factor));
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.watchlist-header h1 {
+  color: white;
+  font-size: calc(28px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.watchlist-count {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: calc(16px * var(--scale-factor));
+}
+
+.empty-watchlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: calc(15px * var(--scale-factor));
+  padding: calc(60px * var(--scale-factor)) calc(20px * var(--scale-factor));
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: calc(12px * var(--scale-factor));
+  color: white;
+}
+
+.empty-watchlist-icon {
+  width: calc(80px * var(--scale-factor));
+  height: calc(80px * var(--scale-factor));
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: calc(10px * var(--scale-factor));
+}
+
+.empty-watchlist-icon i {
+  font-size: calc(32px * var(--scale-factor));
+  opacity: 0.8;
+}
+
+.empty-watchlist h2 {
+  font-size: calc(20px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.empty-watchlist p {
+  max-width: calc(400px * var(--scale-factor));
+  opacity: 0.8;
+  font-size: calc(14px * var(--scale-factor));
+  line-height: 1.5;
+}
+
+.browse-button {
+  display: inline-block;
+  margin-top: calc(15px * var(--scale-factor));
+  background-color: var(--primary-color);
+  border-radius: calc(25px * var(--scale-factor));
+  color: white;
+  padding: calc(12px * var(--scale-factor)) calc(25px * var(--scale-factor));
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.browse-button:hover {
+  background-color: #dd2c3b;
+}
+
+.remove-button {
+  position: absolute;
+  top: calc(10px * var(--scale-factor));
+  left: calc(10px * var(--scale-factor));
+  width: calc(32px * var(--scale-factor));
+  height: calc(32px * var(--scale-factor));
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.2s ease;
+}
+
+.remove-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Animation for adding/removing items */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s forwards;
+}

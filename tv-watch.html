@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch TV Show - AHMED-DARRAJ</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/sidebar.css">
+  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="styles/watch.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        AHMED-<span class="design-text">DARRAJ</span>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">News Feed</div>
+        <ul class="sidebar-menu">
+          <li class="active">
+            <i class="fas fa-play-circle"></i>
+            <span>Browse</span>
+          </li>
+          <li>
+            <i class="far fa-heart"></i>
+            <span>Watchlist</span>
+          </li>
+          <li>
+            <i class="far fa-calendar"></i>
+            <span>Coming Soon</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">Following</div>
+        <ul class="following-list" id="following-list">
+          <!-- Following list will be populated by JavaScript with WebsimSocket -->
+          <li class="loading-followers">
+            <div class="avatar loading-avatar">
+              <div class="loading-spinner"></div>
+            </div>
+            <span>Loading followers...</span>
+          </li>
+        </ul>
+        <div class="load-more" id="load-more-followers">
+          <div class="avatar red-bg">
+            <i class="fas fa-plus"></i>
+          </div>
+          <span>Load more</span>
+        </div>
+      </div>
+
+      <div class="logout">
+        <div class="avatar red-bg">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+        <span>Log Out</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="top-bar">
+        <div class="navigation-arrows">
+          <button class="nav-arrow" id="back-button"><i class="fas fa-chevron-left"></i></button>
+          <button class="nav-arrow"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search everything">
+          <i class="fas fa-keyboard"></i>
+        </div>
+        
+        <div class="user-controls">
+          <button class="icon-button"><i class="fas fa-camera"></i></button>
+          <button class="icon-button"><i class="fas fa-bell"></i></button>
+          <button class="user-profile" id="user-profile">
+            <!-- User profile picture will be set by JavaScript -->
+            <div class="loading-spinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="content watch-content">
+        <div class="video-container">
+          <iframe id="video-iframe" allowfullscreen></iframe>
+          
+          <!-- Loading overlay -->
+          <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner"></div>
+            <p>Loading episode...</p>
+          </div>
+          
+          <!-- Error overlay -->
+          <div class="error-overlay" id="error-overlay" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Video Unavailable</h3>
+            <p>Sorry, this episode cannot be played at the moment.</p>
+            <button id="retry-button" class="retry-button">Try Again</button>
+          </div>
+        </div>
+        
+        <div class="watch-details">
+          <div class="tv-show-info-section">
+            <div class="watch-title-section">
+              <h1 id="show-title">Loading TV show...</h1>
+              <div class="watch-meta">
+                <span id="show-year"></span>
+                <span class="dot-separator">•</span>
+                <span id="episode-info"></span>
+                <span class="dot-separator">•</span>
+                <span id="show-rating"><i class="fas fa-star"></i> --</span>
+              </div>
+            </div>
+            
+            <div class="watch-actions">
+              <button id="add-watchlist-button" class="action-button">
+                <i class="far fa-heart"></i> Add to List
+              </button>
+              <button id="share-button" class="action-button">
+                <i class="fas fa-share-alt"></i> Share
+              </button>
+              <button id="fullscreen-button" class="action-button">
+                <i class="fas fa-expand"></i> Fullscreen
+              </button>
+            </div>
+          </div>
+          
+          <div class="episode-selector">
+            <div class="season-selector">
+              <label for="season-select">Season:</label>
+              <select id="season-select">
+                <!-- Seasons will be populated by JS -->
+              </select>
+            </div>
+            
+            <div class="episode-selector">
+              <label for="episode-select">Episode:</label>
+              <select id="episode-select">
+                <!-- Episodes will be populated by JS -->
+              </select>
+            </div>
+            
+            <button id="play-episode-button" class="play-episode-button">
+              <i class="fas fa-play"></i> Play Episode
+            </button>
+          </div>
+          
+          <div class="episode-title" id="episode-title"></div>
+          
+          <div class="episode-overview">
+            <p id="episode-overview">Loading episode details...</p>
+          </div>
+          
+          <div class="tv-genres" id="tv-genres">
+            <!-- Genres will be populated by JS -->
+          </div>
+          
+          <div class="watch-social">
+            <div class="watching-now-container">
+              <h3>Watching Now</h3>
+              <div class="watching-now-avatars" id="watching-now-avatars">
+                <!-- Will be populated by JS -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="next-episodes">
+            <h3>Next Episodes</h3>
+            <div class="episode-list" id="next-episodes-list">
+              <!-- Next episodes will be populated by JS -->
+            </div>
+          </div>
+          
+          <div class="cast-section">
+            <h3>Cast</h3>
+            <div class="cast-list" id="cast-list">
+              <!-- Cast populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/websim.js"></script>
+  <script src="js/tv-watch.js"></script>
+</body>
+</html>

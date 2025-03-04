@@ -1,0 +1,193 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHMED-DARRAJ - Streaming Platform</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/sidebar.css">
+  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        AHMED-<span class="design-text">DARRAJ</span>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">News Feed</div>
+        <ul class="sidebar-menu">
+          <li class="active">
+            <i class="fas fa-play-circle"></i>
+            <span>Browse</span>
+          </li>
+          <li id="watchlist-menu-item">
+            <i class="far fa-heart"></i>
+            <span>Watchlist</span>
+          </li>
+          <li id="coming-soon-menu-item">
+            <i class="far fa-calendar"></i>
+            <span>Coming Soon</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">Following</div>
+        <ul class="following-list" id="following-list">
+          <!-- Following list will be populated by JavaScript with WebsimSocket -->
+          <li class="loading-followers">
+            <div class="avatar loading-avatar">
+              <div class="loading-spinner"></div>
+            </div>
+            <span>Loading followers...</span>
+          </li>
+        </ul>
+        <div class="load-more" id="load-more-followers">
+          <div class="avatar red-bg">
+            <i class="fas fa-plus"></i>
+          </div>
+          <span>Load more</span>
+        </div>
+      </div>
+
+      <div class="logout">
+        <div class="avatar red-bg">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+        <span>Log Out</span>
+      </div>
+      
+      <!-- Mobile close button -->
+      <button class="close-sidebar" id="close-sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <!-- Sidebar overlay (for mobile) -->
+    <div id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="top-bar">
+        <div class="navigation-arrows">
+          <!-- Mobile menu toggle -->
+          <button id="menu-toggle" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <button class="nav-arrow nav-back"><i class="fas fa-chevron-left"></i></button>
+          <button class="nav-arrow nav-forward"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search everything">
+          <i class="fas fa-keyboard"></i>
+        </div>
+        
+        <div class="user-controls">
+          <button class="icon-button"><i class="fas fa-camera"></i></button>
+          <button class="icon-button"><i class="fas fa-bell"></i></button>
+          <button class="user-profile" id="user-profile">
+            <!-- User profile picture will be set by JavaScript -->
+            <div class="loading-spinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- Featured Movie -->
+        <div class="featured-movie" id="featured-movie">
+          <div class="featured-content">
+            <h1>AVATAR: THE WAY OF WATER</h1>
+            <h2>RETURN TO PANDORA.</h2>
+            
+            <div class="movie-info">
+              <span class="movie-rating"><i class="fas fa-star"></i> 7.6</span>
+              <span class="movie-language"><img src="https://flagcdn.com/16x12/us.png" alt="US Flag"> English</span>
+            </div>
+            
+            <div class="movie-actions">
+              <button class="watch-button">Watch</button>
+              <div class="watching-info">
+                <div class="watching-avatars" id="watching-avatars">
+                  <!-- Will be populated by websim followers -->
+                </div>
+                <span id="watching-count">+3 friends are watching</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Navigation dots for featured movies -->
+          <div class="featured-dots" id="featured-dots">
+            <!-- Dots will be added by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Parties Section -->
+        <div class="section">
+          <div class="section-header">
+            <h3>Parties</h3>
+            <div class="indicator active-indicator"></div>
+          </div>
+          
+          <div class="movie-cards" id="parties-container">
+            <!-- Movie cards will be populated by JavaScript -->
+            <div class="loading-container">
+              <div class="loading-spinner"></div>
+              <p>Loading movies...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue Watching Section -->
+        <div class="section">
+          <div class="section-header">
+            <h3>Continue Watching</h3>
+            <div class="indicator active-indicator"></div>
+          </div>
+          
+          <div class="continue-watching" id="continue-watching-container">
+            <!-- Continue watching cards will be populated by JavaScript -->
+            <div class="loading-container">
+              <div class="loading-spinner"></div>
+              <p>Loading movies...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/websim.js"></script>
+  <script>
+    // Add event listener for watchlist navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('watchlist-menu-item').addEventListener('click', function() {
+        window.location.href = 'watchlist.html';
+      });
+      
+      document.getElementById('coming-soon-menu-item').addEventListener('click', function() {
+        window.location.href = 'coming-soon.html';
+      });
+      
+      // Close sidebar when clicking close button (mobile)
+      const closeSidebarBtn = document.getElementById('close-sidebar');
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      
+      if (closeSidebarBtn && sidebar && overlay) {
+        closeSidebarBtn.addEventListener('click', function() {
+          sidebar.classList.remove('sidebar-open');
+          overlay.style.display = 'none';
+          document.body.style.overflow = ''; // Allow scrolling again
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Movies - AHMED-DARRAJ</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/sidebar.css">
+  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="styles/search.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        AHMED-<span class="design-text">DARRAJ</span>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">News Feed</div>
+        <ul class="sidebar-menu">
+          <li>
+            <i class="fas fa-play-circle"></i>
+            <span>Browse</span>
+          </li>
+          <li>
+            <i class="far fa-heart"></i>
+            <span>Watchlist</span>
+          </li>
+          <li>
+            <i class="far fa-calendar"></i>
+            <span>Coming Soon</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">Following</div>
+        <ul class="following-list" id="following-list">
+          <!-- Following list will be populated by JavaScript with WebsimSocket -->
+          <li class="loading-followers">
+            <div class="avatar loading-avatar">
+              <div class="loading-spinner"></div>
+            </div>
+            <span>Loading followers...</span>
+          </li>
+        </ul>
+        <div class="load-more" id="load-more-followers">
+          <div class="avatar red-bg">
+            <i class="fas fa-plus"></i>
+          </div>
+          <span>Load more</span>
+        </div>
+      </div>
+
+      <div class="logout">
+        <div class="avatar red-bg">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+        <span>Log Out</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="top-bar">
+        <div class="navigation-arrows">
+          <button class="nav-arrow" id="back-button"><i class="fas fa-chevron-left"></i></button>
+          <button class="nav-arrow"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="search-container active">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search-input" placeholder="Search movies, TV shows, actors..." autofocus>
+          <button id="clear-search" class="clear-search"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="user-controls">
+          <button class="icon-button"><i class="fas fa-camera"></i></button>
+          <button class="icon-button"><i class="fas fa-bell"></i></button>
+          <button class="user-profile" id="user-profile">
+            <!-- User profile picture will be set by JavaScript -->
+            <div class="loading-spinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="content search-content">
+        <div class="search-header">
+          <h2 id="search-title">Search Results</h2>
+          <div class="search-filters">
+            <button class="filter-button active" data-filter="movie">Movies</button>
+            <button class="filter-button" data-filter="tv">TV Shows</button>
+            <button class="filter-button" data-filter="person">People</button>
+          </div>
+        </div>
+
+        <div class="search-results" id="search-results">
+          <!-- Initial state -->
+          <div class="search-prompt">
+            <div class="search-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <p>Enter a search term to find movies, TV shows, and people</p>
+          </div>
+          
+          <!-- Loading state (hidden initially) -->
+          <div class="loading-container" id="search-loading" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Searching...</p>
+          </div>
+          
+          <!-- Results container -->
+          <div class="results-grid" id="results-grid"></div>
+          
+          <!-- No results state (hidden initially) -->
+          <div class="no-results" id="no-results" style="display: none;">
+            <div class="no-results-icon">
+              <i class="fas fa-film-slash"></i>
+            </div>
+            <p>No results found for your search</p>
+            <p class="no-results-suggestions">Try different keywords or browse our recommendations</p>
+          </div>
+        </div>
+        
+        <div class="pagination" id="pagination">
+          <!-- Pagination will be added here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/websim.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

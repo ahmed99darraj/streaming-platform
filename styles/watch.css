@@ -1,0 +1,431 @@
+/* Common Watch Page Styles for Movies and TV Shows */
+.watch-content {
+  padding: 0;
+  overflow-y: auto;
+  background-color: var(--dark-bg);
+  color: white;
+}
+
+.video-container {
+  width: 100%;
+  height: calc(600px * var(--scale-factor));
+  background-color: #000;
+  position: relative;
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Loading and Error Overlays */
+.loading-overlay, .error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.error-overlay {
+  text-align: center;
+  padding: calc(20px * var(--scale-factor));
+}
+
+.error-overlay i {
+  font-size: calc(40px * var(--scale-factor));
+  color: var(--primary-color);
+  margin-bottom: calc(15px * var(--scale-factor));
+}
+
+.error-overlay h3 {
+  font-size: calc(24px * var(--scale-factor));
+  margin-bottom: calc(10px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.error-overlay p {
+  margin-bottom: calc(20px * var(--scale-factor));
+  font-size: calc(16px * var(--scale-factor));
+  opacity: 0.8;
+}
+
+.retry-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: calc(20px * var(--scale-factor));
+  padding: calc(10px * var(--scale-factor)) calc(20px * var(--scale-factor));
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.retry-button:hover {
+  background-color: #dd2c3b;
+}
+
+/* Watch Details Section */
+.watch-details {
+  padding: 0 calc(30px * var(--scale-factor)) calc(30px * var(--scale-factor));
+}
+
+.movie-info-section, .tv-show-info-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.watch-title-section {
+  flex: 1;
+}
+
+.watch-title-section h1 {
+  font-size: calc(32px * var(--scale-factor));
+  font-weight: 700;
+  margin-bottom: calc(10px * var(--scale-factor));
+}
+
+.watch-meta {
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--scale-factor));
+  font-size: calc(16px * var(--scale-factor));
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dot-separator {
+  font-size: calc(20px * var(--scale-factor));
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.watch-meta i.fas.fa-star {
+  color: #f59e0b;
+}
+
+.watch-actions {
+  display: flex;
+  gap: calc(10px * var(--scale-factor));
+}
+
+.action-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: calc(20px * var(--scale-factor));
+  padding: calc(8px * var(--scale-factor)) calc(15px * var(--scale-factor));
+  display: flex;
+  align-items: center;
+  gap: calc(6px * var(--scale-factor));
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.action-button.in-watchlist {
+  color: var(--primary-color);
+}
+
+.movie-overview, .episode-overview {
+  margin-bottom: calc(20px * var(--scale-factor));
+  font-size: calc(16px * var(--scale-factor));
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: calc(1000px * var(--scale-factor));
+}
+
+.movie-genres, .tv-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(10px * var(--scale-factor));
+  margin-bottom: calc(25px * var(--scale-factor));
+}
+
+.genre-tag {
+  padding: calc(5px * var(--scale-factor)) calc(12px * var(--scale-factor));
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: calc(20px * var(--scale-factor));
+  font-size: calc(12px * var(--scale-factor));
+  font-weight: 500;
+}
+
+.watching-now-container {
+  margin-bottom: calc(25px * var(--scale-factor));
+}
+
+.watching-now-container h3 {
+  font-size: calc(18px * var(--scale-factor));
+  margin-bottom: calc(10px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.watching-now-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.watching-now-avatars img {
+  width: calc(40px * var(--scale-factor));
+  height: calc(40px * var(--scale-factor));
+  border-radius: 50%;
+  border: calc(2px * var(--scale-factor)) solid white;
+  margin-left: calc(-10px * var(--scale-factor));
+}
+
+.watching-now-avatars img:first-child {
+  margin-left: 0;
+}
+
+.watching-now-counter {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  width: calc(40px * var(--scale-factor));
+  height: calc(40px * var(--scale-factor));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px * var(--scale-factor));
+  font-weight: 500;
+  margin-left: calc(-10px * var(--scale-factor));
+  border: calc(2px * var(--scale-factor)) solid transparent;
+}
+
+/* Director and Cast Sections */
+.director-section, .cast-section {
+  margin-bottom: calc(25px * var(--scale-factor));
+}
+
+.director-section h3, .cast-section h3 {
+  font-size: calc(18px * var(--scale-factor));
+  margin-bottom: calc(15px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.directors-list, .cast-list {
+  display: flex;
+  gap: calc(15px * var(--scale-factor));
+  overflow-x: auto;
+  padding-bottom: calc(10px * var(--scale-factor));
+}
+
+.director-card, .cast-card {
+  flex-shrink: 0;
+  width: calc(120px * var(--scale-factor));
+}
+
+.person-avatar {
+  width: calc(120px * var(--scale-factor));
+  height: calc(120px * var(--scale-factor));
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: calc(8px * var(--scale-factor));
+}
+
+.person-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person-name {
+  font-size: calc(14px * var(--scale-factor));
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.person-role {
+  font-size: calc(12px * var(--scale-factor));
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* TV Show Specific Styles */
+.episode-selector {
+  display: flex;
+  gap: calc(15px * var(--scale-factor));
+  margin-bottom: calc(20px * var(--scale-factor));
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.season-selector, .episode-selector {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--scale-factor));
+}
+
+.season-selector label, .episode-selector label {
+  font-size: calc(14px * var(--scale-factor));
+  font-weight: 500;
+}
+
+.season-selector select, .episode-selector select {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: calc(4px * var(--scale-factor));
+  color: white;
+  padding: calc(8px * var(--scale-factor)) calc(15px * var(--scale-factor));
+  font-size: calc(14px * var(--scale-factor));
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right calc(10px * var(--scale-factor)) center;
+  padding-right: calc(30px * var(--scale-factor));
+}
+
+.play-episode-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: calc(20px * var(--scale-factor));
+  padding: calc(8px * var(--scale-factor)) calc(15px * var(--scale-factor));
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: calc(6px * var(--scale-factor));
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-episode-button:hover {
+  background-color: #dd2c3b;
+}
+
+.episode-title {
+  font-size: calc(20px * var(--scale-factor));
+  font-weight: 600;
+  margin-bottom: calc(10px * var(--scale-factor));
+}
+
+.next-episodes {
+  margin-bottom: calc(25px * var(--scale-factor));
+}
+
+.next-episodes h3 {
+  font-size: calc(18px * var(--scale-factor));
+  margin-bottom: calc(15px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(15px * var(--scale-factor));
+}
+
+.episode-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: calc(10px * var(--scale-factor));
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.episode-card:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.episode-card-thumbnail {
+  height: calc(120px * var(--scale-factor));
+  position: relative;
+}
+
+.episode-card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episode-number-badge {
+  position: absolute;
+  top: calc(10px * var(--scale-factor));
+  left: calc(10px * var(--scale-factor));
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: calc(4px * var(--scale-factor)) calc(8px * var(--scale-factor));
+  border-radius: calc(4px * var(--scale-factor));
+  font-size: calc(12px * var(--scale-factor));
+  font-weight: 500;
+}
+
+.episode-card-info {
+  padding: calc(12px * var(--scale-factor));
+}
+
+.episode-card-title {
+  font-size: calc(14px * var(--scale-factor));
+  font-weight: 600;
+  margin-bottom: calc(5px * var(--scale-factor));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.episode-card-meta {
+  font-size: calc(12px * var(--scale-factor));
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .video-container {
+    height: calc(400px * var(--scale-factor));
+  }
+  
+  .movie-info-section, .tv-show-info-section {
+    flex-direction: column;
+    gap: calc(15px * var(--scale-factor));
+  }
+  
+  .watch-actions {
+    justify-content: flex-start;
+  }
+  
+  .episode-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    height: calc(300px * var(--scale-factor));
+  }
+  
+  .episode-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .episode-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .season-selector, .episode-selector {
+    width: 100%;
+  }
+  
+  .season-selector select, .episode-selector select {
+    width: 100%;
+  }
+}

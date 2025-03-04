@@ -1,0 +1,186 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #e63946;
+  --dark-bg: #121a24;
+  --sidebar-bg: #ffffff;
+  --text-dark: #111827;
+  --text-light: #6b7280;
+  --border-color: #e5e7eb;
+  --hover-bg: #f3f4f6;
+  --online-status: #10b981;
+  --offline-status: #f87171;
+  /* Scale factor of 80% */
+  --scale-factor: 0.8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-dark);
+  height: 100vh;
+  overflow: hidden;
+  font-size: calc(1rem * var(--scale-factor));
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: calc(1rem * var(--scale-factor));
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.avatar {
+  width: calc(32px * var(--scale-factor));
+  height: calc(32px * var(--scale-factor));
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.red-bg {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: calc(14px * var(--scale-factor));
+}
+
+.status {
+  width: calc(8px * var(--scale-factor));
+  height: calc(8px * var(--scale-factor));
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-online {
+  background-color: var(--online-status);
+}
+
+.status-offline {
+  background-color: var(--offline-status);
+}
+
+/* Indicator */
+.indicator {
+  width: calc(30px * var(--scale-factor));
+  height: calc(4px * var(--scale-factor));
+  border-radius: calc(2px * var(--scale-factor));
+  margin-top: calc(5px * var(--scale-factor));
+}
+
+.active-indicator {
+  background-color: var(--primary-color);
+}
+
+/* Sidebar overlay for mobile */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+/* Mobile menu toggle button */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: calc(24px * var(--scale-factor));
+  color: white;
+  padding: calc(5px * var(--scale-factor));
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    width: 80% !important;
+    max-width: 300px;
+    height: 100%;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+  
+  .sidebar-open {
+    left: 0;
+  }
+  
+  .main-content {
+    width: 100%;
+  }
+  
+  .navigation-arrows {
+    display: flex;
+    gap: calc(5px * var(--scale-factor));
+  }
+  
+  .search-container {
+    max-width: calc(200px * var(--scale-factor));
+  }
+  
+  /* Scale down elements */
+  :root {
+    --scale-factor: 0.75;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    max-width: calc(150px * var(--scale-factor));
+  }
+  
+  .icon-button {
+    width: calc(32px * var(--scale-factor));
+    height: calc(32px * var(--scale-factor));
+  }
+  
+  .user-profile {
+    width: calc(32px * var(--scale-factor));
+    height: calc(32px * var(--scale-factor));
+  }
+  
+  /* Further scale down elements */
+  :root {
+    --scale-factor: 0.7;
+  }
+}

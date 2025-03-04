@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Watchlist - AHMED-DARRAJ</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/sidebar.css">
+  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="styles/browse.css">
+  <link rel="stylesheet" href="styles/watchlist.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        AHMED-<span class="design-text">DARRAJ</span>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">News Feed</div>
+        <ul class="sidebar-menu">
+          <li>
+            <i class="fas fa-play-circle"></i>
+            <span>Browse</span>
+          </li>
+          <li class="active" id="watchlist-menu-item">
+            <i class="far fa-heart"></i>
+            <span>Watchlist</span>
+          </li>
+          <li id="coming-soon-menu-item">
+            <i class="far fa-calendar"></i>
+            <span>Coming Soon</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">Following</div>
+        <ul class="following-list" id="following-list">
+          <!-- Following list will be populated by JavaScript with WebsimSocket -->
+          <li class="loading-followers">
+            <div class="avatar loading-avatar">
+              <div class="loading-spinner"></div>
+            </div>
+            <span>Loading followers...</span>
+          </li>
+        </ul>
+        <div class="load-more" id="load-more-followers">
+          <div class="avatar red-bg">
+            <i class="fas fa-plus"></i>
+          </div>
+          <span>Load more</span>
+        </div>
+      </div>
+
+      <div class="logout">
+        <div class="avatar red-bg">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+        <span>Log Out</span>
+      </div>
+      
+      <!-- Mobile close button -->
+      <button class="close-sidebar" id="close-sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <!-- Sidebar overlay (for mobile) -->
+    <div id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="top-bar">
+        <div class="navigation-arrows">
+          <!-- Mobile menu toggle -->
+          <button id="menu-toggle" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <button class="nav-arrow nav-back" id="back-button"><i class="fas fa-chevron-left"></i></button>
+          <button class="nav-arrow nav-forward"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search in watchlist">
+          <i class="fas fa-keyboard"></i>
+        </div>
+        
+        <div class="user-controls">
+          <button class="icon-button"><i class="fas fa-camera"></i></button>
+          <button class="icon-button"><i class="fas fa-bell"></i></button>
+          <button class="user-profile" id="user-profile">
+            <!-- User profile picture will be set by JavaScript -->
+            <div class="loading-spinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="content watchlist-content">
+        <div class="watchlist-header">
+          <h1>My Watchlist</h1>
+          <p class="watchlist-count" id="watchlist-count">0 items</p>
+        </div>
+        
+        <div class="watchlist-results">
+          <div class="results-grid" id="watchlist-grid">
+            <!-- Will be populated by JavaScript -->
+          </div>
+          
+          <div id="empty-watchlist" class="empty-watchlist">
+            <div class="empty-watchlist-icon">
+              <i class="far fa-heart"></i>
+            </div>
+            <h2>Your watchlist is empty</h2>
+            <p>Add movies and TV shows to your watchlist to keep track of what you want to watch.</p>
+            <a href="browse.html" class="browse-button">Browse Content</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/websim.js"></script>
+  <script src="js/watchlist.js"></script>
+</body>
+</html>

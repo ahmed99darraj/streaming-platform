@@ -1,0 +1,398 @@
+/* Person View Styles */
+.person-view-content {
+  padding: 0;
+  overflow-y: auto;
+}
+
+.person-header {
+  padding: calc(30px * var(--scale-factor));
+  background-color: rgba(255, 255, 255, 0.03);
+  margin-bottom: calc(30px * var(--scale-factor));
+}
+
+.person-profile-container {
+  display: flex;
+  gap: calc(30px * var(--scale-factor));
+}
+
+.person-profile-image {
+  width: calc(280px * var(--scale-factor));
+  height: calc(420px * var(--scale-factor));
+  border-radius: calc(12px * var(--scale-factor));
+  overflow: hidden;
+  box-shadow: 0 calc(10px * var(--scale-factor)) calc(20px * var(--scale-factor)) rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+.person-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person-profile-info {
+  flex: 1;
+  color: white;
+}
+
+.person-profile-info h1 {
+  font-size: calc(36px * var(--scale-factor));
+  font-weight: 700;
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.person-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(20px * var(--scale-factor));
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--scale-factor));
+  font-size: calc(14px * var(--scale-factor));
+  color: rgba(255, 255, 255, 0.8);
+  padding: calc(6px * var(--scale-factor)) calc(12px * var(--scale-factor));
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: calc(20px * var(--scale-factor));
+}
+
+.meta-item i {
+  font-size: calc(16px * var(--scale-factor));
+}
+
+.person-social-links {
+  display: flex;
+  gap: calc(12px * var(--scale-factor));
+  margin-bottom: calc(25px * var(--scale-factor));
+}
+
+.social-link {
+  width: calc(40px * var(--scale-factor));
+  height: calc(40px * var(--scale-factor));
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: calc(18px * var(--scale-factor));
+  transition: all 0.2s ease;
+}
+
+.social-link:hover {
+  background-color: var(--primary-color);
+}
+
+.person-biography {
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.person-biography h3 {
+  font-size: calc(18px * var(--scale-factor));
+  font-weight: 600;
+  margin-bottom: calc(12px * var(--scale-factor));
+}
+
+.person-biography p {
+  font-size: calc(16px * var(--scale-factor));
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: calc(800px * var(--scale-factor));
+}
+
+.read-more-toggle {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Filmography Section */
+.person-filmography {
+  padding: 0 calc(30px * var(--scale-factor)) calc(30px * var(--scale-factor));
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.section-header h2 {
+  font-size: calc(24px * var(--scale-factor));
+  color: white;
+  font-weight: 600;
+}
+
+.filmography-filters {
+  display: flex;
+  gap: calc(10px * var(--scale-factor));
+}
+
+.filter-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: calc(20px * var(--scale-factor));
+  color: white;
+  cursor: pointer;
+  font-size: calc(14px * var(--scale-factor));
+  font-weight: 500;
+  padding: calc(8px * var(--scale-factor)) calc(16px * var(--scale-factor));
+  transition: background-color 0.2s;
+}
+
+.filter-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-button.active {
+  background-color: var(--primary-color);
+}
+
+.filmography-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: calc(20px * var(--scale-factor));
+  margin-bottom: calc(30px * var(--scale-factor));
+}
+
+.credit-card {
+  background-color: white;
+  border-radius: calc(12px * var(--scale-factor));
+  overflow: hidden;
+  box-shadow: 0 calc(4px * var(--scale-factor)) calc(6px * var(--scale-factor)) rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.credit-card:hover {
+  transform: scale(1.03);
+}
+
+.credit-poster {
+  height: calc(250px * var(--scale-factor));
+  overflow: hidden;
+  position: relative;
+}
+
+.credit-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-type-badge {
+  position: absolute;
+  top: calc(10px * var(--scale-factor));
+  right: calc(10px * var(--scale-factor));
+  background-color: var(--primary-color);
+  color: white;
+  padding: calc(4px * var(--scale-factor)) calc(8px * var(--scale-factor));
+  border-radius: calc(4px * var(--scale-factor));
+  font-size: calc(10px * var(--scale-factor));
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.character-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: calc(8px * var(--scale-factor)) calc(12px * var(--scale-factor));
+  font-size: calc(12px * var(--scale-factor));
+}
+
+.credit-info {
+  padding: calc(15px * var(--scale-factor));
+}
+
+.credit-title {
+  color: var(--text-dark);
+  font-size: calc(16px * var(--scale-factor));
+  font-weight: 600;
+  margin-bottom: calc(5px * var(--scale-factor));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.credit-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-light);
+  font-size: calc(12px * var(--scale-factor));
+}
+
+.credit-year {
+  opacity: 0.8;
+}
+
+.credit-rating {
+  display: flex;
+  align-items: center;
+  gap: calc(5px * var(--scale-factor));
+}
+
+.credit-rating i {
+  color: #f59e0b;
+}
+
+/* Load More Button */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(20px * var(--scale-factor));
+}
+
+.load-more-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: calc(25px * var(--scale-factor));
+  color: white;
+  cursor: pointer;
+  font-size: calc(14px * var(--scale-factor));
+  font-weight: 500;
+  padding: calc(12px * var(--scale-factor)) calc(25px * var(--scale-factor));
+  transition: background-color 0.2s;
+}
+
+.load-more-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.load-more-button.loading {
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--scale-factor));
+}
+
+.load-more-button.loading .spinner-small {
+  width: calc(16px * var(--scale-factor));
+  height: calc(16px * var(--scale-factor));
+  border: calc(2px * var(--scale-factor)) solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spinner 1s linear infinite;
+}
+
+/* Loading Container */
+.loading-container {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(15px * var(--scale-factor));
+  padding: calc(40px * var(--scale-factor)) 0;
+  color: white;
+}
+
+/* Error message */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: calc(50px * var(--scale-factor));
+  gap: calc(20px * var(--scale-factor));
+}
+
+.error-container h2 {
+  font-size: calc(24px * var(--scale-factor));
+  font-weight: 600;
+}
+
+.error-container p {
+  font-size: calc(16px * var(--scale-factor));
+  opacity: 0.8;
+}
+
+.go-back-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: calc(20px * var(--scale-factor));
+  padding: calc(10px * var(--scale-factor)) calc(20px * var(--scale-factor));
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.go-back-button:hover {
+  background-color: #dd2c3b;
+}
+
+/* Animation */
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .filmography-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .loading-container {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 900px) {
+  .person-profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .person-profile-image {
+    margin-bottom: calc(20px * var(--scale-factor));
+  }
+  
+  .filmography-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .loading-container {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .person-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(10px * var(--scale-factor));
+  }
+  
+  .filmography-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .loading-container {
+    grid-column: span 2;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filmography-filters {
+    margin-top: calc(10px * var(--scale-factor));
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: calc(5px * var(--scale-factor));
+  }
+}

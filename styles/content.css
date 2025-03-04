@@ -1,0 +1,572 @@
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Top Bar */
+.top-bar {
+  height: calc(64px * var(--scale-factor));
+  display: flex;
+  align-items: center;
+  padding: 0 calc(20px * var(--scale-factor));
+  gap: calc(15px * var(--scale-factor));
+}
+
+.navigation-arrows {
+  display: flex;
+  gap: calc(10px * var(--scale-factor));
+}
+
+.nav-arrow {
+  width: calc(32px * var(--scale-factor));
+  height: calc(32px * var(--scale-factor));
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  font-size: calc(12px * var(--scale-factor));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.search-container {
+  flex: 1;
+  height: calc(40px * var(--scale-factor));
+  background-color: white;
+  border-radius: calc(20px * var(--scale-factor));
+  display: flex;
+  align-items: center;
+  padding: 0 calc(15px * var(--scale-factor));
+  gap: calc(10px * var(--scale-factor));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.search-container i {
+  color: var(--text-light);
+  font-size: calc(14px * var(--scale-factor));
+}
+
+.search-container input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: calc(14px * var(--scale-factor));
+  font-family: inherit;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--scale-factor));
+}
+
+.icon-button {
+  width: calc(40px * var(--scale-factor));
+  height: calc(40px * var(--scale-factor));
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  font-size: calc(14px * var(--scale-factor));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.user-profile {
+  width: calc(40px * var(--scale-factor));
+  height: calc(40px * var(--scale-factor));
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 0 calc(20px * var(--scale-factor)) calc(20px * var(--scale-factor));
+  overflow-y: auto;
+}
+
+/* Featured Movie */
+.featured-movie {
+  position: relative;
+  height: calc(300px * var(--scale-factor));
+  border-radius: calc(12px * var(--scale-factor));
+  margin-bottom: calc(30px * var(--scale-factor));
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.featured-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: calc(30px * var(--scale-factor));
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+}
+
+.featured-content h1 {
+  font-size: calc(32px * var(--scale-factor));
+  font-weight: 700;
+  margin-bottom: calc(5px * var(--scale-factor));
+  letter-spacing: calc(1px * var(--scale-factor));
+  transition: opacity 0.3s ease;
+}
+
+.featured-content h2 {
+  font-size: calc(16px * var(--scale-factor));
+  font-weight: 500;
+  margin-bottom: calc(20px * var(--scale-factor));
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.movie-info {
+  display: flex;
+  align-items: center;
+  gap: calc(15px * var(--scale-factor));
+  margin-bottom: calc(20px * var(--scale-factor));
+  font-size: calc(14px * var(--scale-factor));
+  transition: opacity 0.3s ease;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: calc(5px * var(--scale-factor));
+}
+
+.movie-rating i {
+  color: #f59e0b;
+}
+
+.movie-language {
+  display: flex;
+  align-items: center;
+  gap: calc(5px * var(--scale-factor));
+}
+
+.movie-actions {
+  display: flex;
+  align-items: center;
+  gap: calc(20px * var(--scale-factor));
+  transition: opacity 0.3s ease;
+}
+
+.watch-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: calc(10px * var(--scale-factor)) calc(25px * var(--scale-factor));
+  border-radius: calc(30px * var(--scale-factor));
+  font-weight: 500;
+  font-size: calc(14px * var(--scale-factor));
+  transition: background-color 0.2s;
+}
+
+.watch-button:hover {
+  background-color: #dd2c3b;
+}
+
+.watching-info {
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--scale-factor));
+  font-size: calc(14px * var(--scale-factor));
+  opacity: 0.9;
+}
+
+.watching-avatars {
+  display: flex;
+}
+
+.watching-avatars img {
+  width: calc(28px * var(--scale-factor));
+  height: calc(28px * var(--scale-factor));
+  border-radius: 50%;
+  border: calc(2px * var(--scale-factor)) solid white;
+  margin-left: calc(-8px * var(--scale-factor));
+}
+
+.watching-avatars img:first-child {
+  margin-left: 0;
+}
+
+/* Featured dots */
+.featured-dots {
+  position: absolute;
+  bottom: calc(10px * var(--scale-factor));
+  right: calc(20px * var(--scale-factor));
+  display: flex;
+  gap: calc(8px * var(--scale-factor));
+}
+
+.dot {
+  width: calc(8px * var(--scale-factor));
+  height: calc(8px * var(--scale-factor));
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--primary-color);
+}
+
+/* Fade effects for carousel */
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Sections */
+.section {
+  margin-bottom: calc(30px * var(--scale-factor));
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: calc(20px * var(--scale-factor));
+}
+
+.section-header h3 {
+  font-size: calc(20px * var(--scale-factor));
+  font-weight: 600;
+  color: white;
+}
+
+/* Movie Cards */
+.movie-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(20px * var(--scale-factor));
+}
+
+.movie-card {
+  background-color: white;
+  border-radius: calc(12px * var(--scale-factor));
+  overflow: hidden;
+  box-shadow: 0 calc(4px * var(--scale-factor)) calc(6px * var(--scale-factor)) rgba(0,0,0,0.1);
+}
+
+.movie-poster {
+  height: calc(160px * var(--scale-factor));
+  overflow: hidden;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-watchers {
+  padding: calc(10px * var(--scale-factor)) calc(15px * var(--scale-factor));
+  border-bottom: 1px solid var(--border-color);
+}
+
+.watcher-avatars {
+  display: flex;
+}
+
+.watcher-avatars img {
+  width: calc(24px * var(--scale-factor));
+  height: calc(24px * var(--scale-factor));
+  border-radius: 50%;
+  margin-left: calc(-8px * var(--scale-factor));
+  border: calc(2px * var(--scale-factor)) solid white;
+}
+
+.watcher-avatars img:first-child {
+  margin-left: 0;
+}
+
+.movie-title {
+  padding: calc(10px * var(--scale-factor)) calc(15px * var(--scale-factor)) calc(5px * var(--scale-factor));
+  font-weight: 600;
+  font-size: calc(16px * var(--scale-factor));
+  color: var(--text-dark);
+}
+
+.movie-genres {
+  padding: 0 calc(15px * var(--scale-factor)) calc(15px * var(--scale-factor));
+  font-size: calc(12px * var(--scale-factor));
+  color: var(--text-light);
+}
+
+/* Continue Watching */
+.continue-watching {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(20px * var(--scale-factor));
+}
+
+.continue-card {
+  border-radius: calc(12px * var(--scale-factor));
+  overflow: hidden;
+  height: calc(220px * var(--scale-factor));
+  box-shadow: 0 calc(4px * var(--scale-factor)) calc(6px * var(--scale-factor)) rgba(0,0,0,0.1);
+  position: relative;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.continue-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.continue-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: calc(15px * var(--scale-factor));
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  color: white;
+}
+
+.continue-title {
+  font-weight: 600;
+  font-size: calc(14px * var(--scale-factor));
+  margin-bottom: calc(8px * var(--scale-factor));
+}
+
+.continue-progress {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6px * var(--scale-factor));
+}
+
+.progress-bar {
+  height: calc(4px * var(--scale-factor));
+  background-color: rgba(255,255,255,0.3);
+  border-radius: calc(2px * var(--scale-factor));
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--primary-color);
+}
+
+.continue-progress span {
+  font-size: calc(12px * var(--scale-factor));
+  opacity: 0.8;
+}
+
+/* Loading Spinner and Containers */
+.loading-spinner {
+  width: calc(24px * var(--scale-factor));
+  height: calc(24px * var(--scale-factor));
+  border: calc(3px * var(--scale-factor)) solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spinner 1s linear infinite;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10px * var(--scale-factor));
+  grid-column: span 4;
+  padding: calc(20px * var(--scale-factor)) 0;
+  color: white;
+}
+
+.loading-avatar {
+  background-color: rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-followers {
+  opacity: 0.7;
+}
+
+/* Watch notification */
+.watch-notification {
+  position: fixed;
+  bottom: calc(20px * var(--scale-factor));
+  right: calc(20px * var(--scale-factor));
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  border-radius: calc(8px * var(--scale-factor));
+  padding: calc(12px * var(--scale-factor)) calc(16px * var(--scale-factor));
+  display: flex;
+  align-items: center;
+  gap: calc(12px * var(--scale-factor));
+  z-index: 100;
+  animation: fadeIn 0.3s;
+}
+
+.notification-avatar {
+  width: calc(32px * var(--scale-factor));
+  height: calc(32px * var(--scale-factor));
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.notification-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.notification-text {
+  font-size: calc(14px * var(--scale-factor));
+}
+
+.error-message {
+  grid-column: span 4;
+  color: white;
+  text-align: center;
+  padding: calc(20px * var(--scale-factor));
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: calc(8px * var(--scale-factor));
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .movie-cards, .continue-watching {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .loading-container {
+    grid-column: span 3;
+  }
+  
+  .featured-movie {
+    height: calc(250px * var(--scale-factor));
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-cards, .continue-watching {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .loading-container {
+    grid-column: span 2;
+  }
+  
+  .featured-movie {
+    height: calc(200px * var(--scale-factor));
+  }
+  
+  .featured-content {
+    padding: calc(15px * var(--scale-factor));
+  }
+  
+  .featured-content h1 {
+    font-size: calc(24px * var(--scale-factor));
+  }
+  
+  .featured-content h2 {
+    font-size: calc(14px * var(--scale-factor));
+  }
+  
+  .watch-button {
+    padding: calc(8px * var(--scale-factor)) calc(16px * var(--scale-factor));
+    font-size: calc(12px * var(--scale-factor));
+  }
+  
+  .watching-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-cards, .continue-watching {
+    grid-template-columns: 1fr;
+  }
+  
+  .loading-container {
+    grid-column: span 1;
+  }
+  
+  .featured-content h1 {
+    font-size: calc(20px * var(--scale-factor));
+  }
+  
+  .featured-content h2, .movie-info {
+    font-size: calc(12px * var(--scale-factor));
+  }
+}
