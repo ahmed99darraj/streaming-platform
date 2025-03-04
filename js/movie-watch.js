@@ -178,35 +178,12 @@ document.addEventListener('DOMContentLoaded', function() {
       videoContainer.appendChild(barrierDiv);
     }
     
-    // Add event listener to window to prevent popups
-    const handleBeforeUnload = function(e) {
-      // Allow normal navigation from our own buttons
-      const target = e.target;
-      if (target && target.tagName === 'BUTTON') {
-        return;
-      }
-      
-      // Prevent any popups or redirects from iframe
-      e.preventDefault();
-      e.stopPropagation();
-      return e.returnValue = 'Are you sure you want to leave?';
-    };
-    
-    // Add event listener for preventing tab/window opening
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    
-    // Override window.open
+    // Override window.open to block unwanted popups
     const originalWindowOpen = window.open;
     window.open = function() {
       console.log('Popup blocked');
       return null;
     };
-    
-    // Cleanup on page unload
-    window.addEventListener('unload', function() {
-      window.open = originalWindowOpen;
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    });
   }
 
   // Fetch movie details from TMDB API - optimized to only fetch essential data
