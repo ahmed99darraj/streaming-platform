@@ -1,25 +1,25 @@
 /* Sidebar Styles */
 .sidebar {
-  width: calc(220px * var(--scale-factor));
-  min-width: calc(220px * var(--scale-factor));
+  width: 250px;
+  height: 100vh;
   background-color: #800080;
-  height: 100%;
-  padding: calc(20px * var(--scale-factor));
-  border-right: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  z-index: 999;
-  color: white;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-top: 60px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+  transform: translateX(0);
 }
 
 .logo {
-  font-size: calc(18px * var(--scale-factor));
-  font-weight: 700;
-  margin-bottom: calc(30px * var(--scale-factor));
-  padding-left: calc(10px * var(--scale-factor));
-  cursor: pointer;
+  text-align: center;
+  padding: 20px;
   color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .design-text {
@@ -39,13 +39,19 @@
   padding-left: calc(10px * var(--scale-factor));
 }
 
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .sidebar-menu li, 
 .following-list li, 
 .load-more, 
 .logout {
   display: flex;
   align-items: center;
-  padding: calc(10px * var(--scale-factor));
+  padding: 15px 20px;
   border-radius: calc(8px * var(--scale-factor));
   margin-bottom: calc(8px * var(--scale-factor));
   cursor: pointer;
@@ -61,8 +67,7 @@
 }
 
 .sidebar-menu li.active {
-  background-color: rgba(255, 255, 255, 0.15);
-  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-menu li i {
@@ -120,11 +125,35 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 80%;
-    max-width: 300px;
+    transform: translateX(100%);
+    width: 200px;
   }
   
-  .close-sidebar {
-    display: block;
+  .content {
+    margin-right: 0;
+  }
+
+  .content.shifted {
+    margin-right: 200px;
+  }
+}
+
+/* TV Box Optimizations */
+@media (min-width: 1200px) {
+  .sidebar-menu li {
+    padding: 20px 25px;
+    font-size: 18px;
+  }
+
+  .sidebar-menu li:focus {
+    outline: 2px solid white;
+    outline-offset: -2px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .sidebar-menu li:active {
+    background-color: rgba(255, 255, 255, 0.3);
   }
 }

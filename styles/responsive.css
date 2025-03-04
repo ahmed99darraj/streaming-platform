@@ -1,0 +1,137 @@
+/* Responsive Design for Mobile and TV Box */
+
+/* General Responsive Rules */
+@media screen and (max-width: 1200px) {
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        background: #800080;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .movie-grid, .show-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+}
+
+/* Mobile Specific */
+@media screen and (max-width: 768px) {
+    .movie-grid, .show-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .movie-card, .show-card {
+        margin-bottom: 15px;
+    }
+
+    .movie-card img, .show-card img {
+        height: 180px;
+    }
+
+    .movie-card .title, .show-card .title {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .video-container {
+        height: calc(100vh - 60px);
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* TV Box Specific */
+@media screen and (min-width: 1201px) and (max-aspect-ratio: 16/9) {
+    .movie-grid, .show-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .movie-card img, .show-card img {
+        height: 300px;
+    }
+
+    .movie-card .title, .show-card .title {
+        font-size: 18px;
+    }
+
+    .search-input {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    /* Larger touch targets for remote control */
+    .button, .menu-item {
+        padding: 15px 20px;
+        margin: 10px 0;
+    }
+}
+
+/* Focus styles for TV navigation */
+@media (hover: none) {
+    .movie-card:focus, .show-card:focus,
+    .button:focus, .menu-item:focus {
+        outline: 3px solid #800080;
+        transform: scale(1.05);
+    }
+}
+
+/* Loading and Error States */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #800080;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Improved Touch Feedback */
+@media (hover: none) {
+    .movie-card:active, .show-card:active,
+    .button:active, .menu-item:active {
+        background-color: rgba(128, 0, 128, 0.2);
+    }
+}
