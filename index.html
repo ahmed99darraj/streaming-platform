@@ -10,67 +10,36 @@
 </head>
 <body>
   <div class="app-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <div class="logo">
-        AHMED-<span class="design-text">DARRAJ</span>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="section-title">News Feed</div>
-        <ul class="sidebar-menu">
-          <li class="active">
-            <i class="fas fa-play-circle"></i>
-            <span>Browse</span>
-          </li>
-          <li id="watchlist-menu-item">
-            <i class="far fa-heart"></i>
-            <span>Watchlist</span>
-          </li>
-          <li id="coming-soon-menu-item">
-            <i class="far fa-calendar"></i>
-            <span>Coming Soon</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="section-title">Following</div>
-        <ul class="following-list" id="following-list">
-          <!-- Following list will be populated by JavaScript with WebsimSocket -->
-          <li class="loading-followers">
-            <div class="avatar loading-avatar">
-              <div class="loading-spinner"></div>
-            </div>
-            <span>Loading followers...</span>
-          </li>
-        </ul>
-        <div class="load-more" id="load-more-followers">
-          <div class="avatar red-bg">
-            <i class="fas fa-plus"></i>
-          </div>
-          <span>Load more</span>
-        </div>
-      </div>
-
-      <div class="logout">
-        <div class="avatar red-bg">
-          <i class="fas fa-sign-out-alt"></i>
-        </div>
-        <span>Log Out</span>
-      </div>
-      
-      <!-- Mobile close button -->
-      <button class="close-sidebar" id="close-sidebar">
-        <i class="fas fa-times"></i>
+      <button class="toggle-sidebar">
+        <i class="fas fa-chevron-right"></i>
       </button>
+      <div class="logo">
+        <i class="fas fa-play-circle"></i>
+        <span class="logo-text">AHMED-DARRAJ</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active">
+          <i class="fas fa-home"></i>
+          <span>الرئيسية</span>
+        </li>
+        <li>
+          <i class="fas fa-search"></i>
+          <span>بحث</span>
+        </li>
+        <li id="watchlist-menu-item">
+          <i class="far fa-heart"></i>
+          <span>Watchlist</span>
+        </li>
+        <li id="coming-soon-menu-item">
+          <i class="far fa-calendar"></i>
+          <span>Coming Soon</span>
+        </li>
+      </ul>
     </div>
-    
-    <!-- Sidebar overlay (for mobile) -->
-    <div id="sidebar-overlay"></div>
+    <div class="sidebar-overlay"></div>
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <div class="content">
       <div class="top-bar">
         <div class="navigation-arrows">
           <!-- Mobile menu toggle -->
@@ -159,35 +128,99 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/movies.js"></script>
-  <script src="js/websim.js"></script>
-  <script>
-    // Add event listener for watchlist navigation
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('watchlist-menu-item').addEventListener('click', function() {
-        window.location.href = 'watchlist.html';
-      });
-      
-      document.getElementById('coming-soon-menu-item').addEventListener('click', function() {
-        window.location.href = 'coming-soon.html';
-      });
-      
-      // Close sidebar when clicking close button (mobile)
-      const closeSidebarBtn = document.getElementById('close-sidebar');
+    <script>
+      // Toggle Sidebar
+      const toggleBtn = document.querySelector('.toggle-sidebar');
       const sidebar = document.querySelector('.sidebar');
-      const overlay = document.getElementById('sidebar-overlay');
+      const content = document.querySelector('.content');
+      const overlay = document.querySelector('.sidebar-overlay');
+      const toggleIcon = toggleBtn.querySelector('i');
+
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('expanded');
+        
+        if (sidebar.classList.contains('collapsed')) {
+          toggleIcon.classList.remove('fa-chevron-right');
+          toggleIcon.classList.add('fa-chevron-left');
+        } else {
+          toggleIcon.classList.remove('fa-chevron-left');
+          toggleIcon.classList.add('fa-chevron-right');
+        }
+      });
+
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector('.menu-toggle');
       
-      if (closeSidebarBtn && sidebar && overlay) {
-        closeSidebarBtn.addEventListener('click', function() {
-          sidebar.classList.remove('sidebar-open');
-          overlay.style.display = 'none';
-          document.body.style.overflow = ''; // Allow scrolling again
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('active');
+          sidebar.classList.remove('collapsed');
         });
       }
-    });
-  </script>
+
+      // Close sidebar when clicking overlay
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+      });
+
+      // Handle touch events for better mobile experience
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+
+      document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        const swipeDistance = touchEndX - touchStartX;
+        
+        // Right swipe to open sidebar
+        if (swipeDistance > 100 && touchStartX < 50) {
+          sidebar.classList.add('active');
+        }
+        
+        // Left swipe to close sidebar
+        if (swipeDistance < -100 && sidebar.classList.contains('active')) {
+          sidebar.classList.remove('active');
+        }
+      }
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/movies.js"></script>
+    <script src="js/websim.js"></script>
+    <script>
+      // Add event listener for watchlist navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('watchlist-menu-item').addEventListener('click', function() {
+          window.location.href = 'watchlist.html';
+        });
+        
+        document.getElementById('coming-soon-menu-item').addEventListener('click', function() {
+          window.location.href = 'coming-soon.html';
+        });
+        
+        // Close sidebar when clicking close button (mobile)
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        
+        if (closeSidebarBtn && sidebar && overlay) {
+          closeSidebarBtn.addEventListener('click', function() {
+            sidebar.classList.remove('sidebar-open');
+            overlay.style.display = 'none';
+            document.body.style.overflow = ''; // Allow scrolling again
+          });
+        }
+      });
+    </script>
+  </div>
 </body>
 </html>
